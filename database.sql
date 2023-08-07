@@ -33,3 +33,20 @@ CREATE TABLE contacts
 SELECT * FROM contacts;
 
 DESC contacts;
+
+CREATE TABLE addresses
+(
+    id         VARCHAR(100) NOT NULL,
+    contact_id   VARCHAR(100) NOT NULL,
+    street      VARCHAR(100),
+    city      VARCHAR(100),
+    provice      VARCHAR(100),
+    country      VARCHAR(100) NOT NULL,
+    postalcode      VARCHAR(100),
+    PRIMARY KEY (id),
+    FOREIGN KEY fk_contact_addresses (contact_id) REFERENCES contacts (id)
+) ENGINE InnoDB;
+
+SELECT * FROM addresses;
+
+DESC addresses;
