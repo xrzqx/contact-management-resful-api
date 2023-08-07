@@ -6,6 +6,7 @@ import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.RegisterUserRequest;
@@ -21,13 +22,12 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private Validator validator;
+    private ValidationService validationService;
+
+    @Transactional
     public void register(RegisterUserRequest request){
-        Set<ConstraintViolation<RegisterUserRequest>> constraintViolationSet = validator.validate(request);
-        if(!constraintViolationSet.isEmpty()){
-            //eror
-            throw new ConstraintViolationException(constraintViolationSet);
-        }
+
+        validationService.validate(request);
 
         if (userRepository.existsById(request.getUsername())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already registered");
@@ -40,4 +40,6 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+
 }
