@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.RegisterUserRequest;
+import xrzqx.contactmanagementresfulapi.model.UserResponse;
 import xrzqx.contactmanagementresfulapi.repository.UserRepository;
 import xrzqx.contactmanagementresfulapi.security.BCrypt;
 
@@ -39,6 +40,13 @@ public class UserService {
         user.setName(request.getName());
 
         userRepository.save(user);
+    }
+
+    public UserResponse get(User user){
+        return UserResponse.builder()
+                .username(user.getUsername())
+                .name(user.getName())
+                .build();
     }
 
 
