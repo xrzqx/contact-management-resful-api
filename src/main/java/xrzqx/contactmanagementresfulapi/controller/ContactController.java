@@ -2,9 +2,7 @@ package xrzqx.contactmanagementresfulapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.ContactResponse;
 import xrzqx.contactmanagementresfulapi.model.CreateContactRequest;
@@ -24,6 +22,15 @@ public class ContactController {
     )
     public WebResponse<ContactResponse> create(User user, @RequestBody CreateContactRequest request){
         ContactResponse contactResponse = contactService.create(user, request);
+        return WebResponse.<ContactResponse>builder().data(contactResponse).build();
+    }
+
+    @GetMapping(
+            path = "/api/contacts/{idContact}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<ContactResponse> get (User user, @PathVariable("idContact") String idContact){
+        ContactResponse contactResponse = contactService.get(user, idContact);
         return WebResponse.<ContactResponse>builder().data(contactResponse).build();
     }
 }
