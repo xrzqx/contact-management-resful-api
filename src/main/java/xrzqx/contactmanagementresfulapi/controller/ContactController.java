@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.ContactResponse;
 import xrzqx.contactmanagementresfulapi.model.CreateContactRequest;
+import xrzqx.contactmanagementresfulapi.model.UpdateContactRequest;
 import xrzqx.contactmanagementresfulapi.model.WebResponse;
 import xrzqx.contactmanagementresfulapi.service.ContactService;
 
@@ -31,6 +32,19 @@ public class ContactController {
     )
     public WebResponse<ContactResponse> get (User user, @PathVariable("idContact") String idContact){
         ContactResponse contactResponse = contactService.get(user, idContact);
+        return WebResponse.<ContactResponse>builder().data(contactResponse).build();
+    }
+
+    @PatchMapping(
+            path = "/api/contacts/{idContact}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<ContactResponse> update (User user,
+                                                @RequestBody UpdateContactRequest request,
+                                                @PathVariable("idContact") String idContact){
+        request.setId(idContact);
+        ContactResponse contactResponse = contactService.update(user, request);
         return WebResponse.<ContactResponse>builder().data(contactResponse).build();
     }
 }

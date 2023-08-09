@@ -9,8 +9,10 @@ import xrzqx.contactmanagementresfulapi.entity.Contact;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.ContactResponse;
 import xrzqx.contactmanagementresfulapi.model.CreateContactRequest;
+import xrzqx.contactmanagementresfulapi.model.UpdateContactRequest;
 import xrzqx.contactmanagementresfulapi.repository.ContactRepository;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -52,6 +54,27 @@ public class ContactService {
     public ContactResponse get(User user, String id){
         Contact contact = contactRepository.findFirstByUserAndId(user,id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+        return toContactResponse(contact);
+    }
+
+    @Transactional
+    public ContactResponse update(User user, UpdateContactRequest request){
+        validationService.validate(request);
+        Contact contact = contactRepository.findFirstByUserAndId(user,request.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+
+        contact.setFirstName(request.getFirstName());
+        if (Objects.nonNull(request.getLastName())) {
+            contact.setLastName(request.getLastName());
+        }
+        if (Objects.nonNull(request.getEmail())) {
+            contact.setEmail(request.getEmail());
+        }
+        if (Objects.nonNull(request.getPhone())) {
+            contact.setPhone(request.getPhone());
+        }
+        contactRepository.save(contact);
+
         return toContactResponse(contact);
     }
 }

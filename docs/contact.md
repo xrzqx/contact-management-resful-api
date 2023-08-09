@@ -43,7 +43,7 @@ Response Body (Failed) :
 
 ## Update Contact
 
-Endpoint : PUT /api/contacts/{idContact}
+Endpoint : PATCH /api/contacts/{idContact}
 
 Request Header :
 
