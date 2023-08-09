@@ -14,6 +14,7 @@ import xrzqx.contactmanagementresfulapi.model.UpdateAddressRequest;
 import xrzqx.contactmanagementresfulapi.repository.AddressRepository;
 import xrzqx.contactmanagementresfulapi.repository.ContactRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -101,5 +102,14 @@ public class AddressService {
         addressRepository.save(address);
 
         return toAddressResponse(address);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AddressResponse> list(User user, String idContact){
+        Contact contact = contactRepository.findFirstByUserAndId(user, idContact)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact is Not Found"));
+
+        List<Address> addresses = addressRepository.findAllByContact(contact);
+        return addresses.stream().map(this::toAddressResponse).toList();
     }
 }

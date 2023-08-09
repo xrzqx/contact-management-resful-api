@@ -21,6 +21,7 @@ import xrzqx.contactmanagementresfulapi.repository.ContactRepository;
 import xrzqx.contactmanagementresfulapi.repository.UserRepository;
 import xrzqx.contactmanagementresfulapi.security.BCrypt;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,7 +73,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void createAddressBadRequest() throws Exception{
+    void createAddressBadRequest() throws Exception {
         CreateAddressRequest request = new CreateAddressRequest();
         request.setCountry("");
 
@@ -92,7 +93,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void createAddressSuccess() throws Exception{
+    void createAddressSuccess() throws Exception {
         CreateAddressRequest request = new CreateAddressRequest();
         request.setStreet("Jalan");
         request.setCity("Gresik");
@@ -123,7 +124,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void getAddressNotFound() throws Exception{
+    void getAddressNotFound() throws Exception {
         mockMvc.perform(
                 get("/api/contacts/test/addresses/test")
                         .accept(MediaType.APPLICATION_JSON)
@@ -139,7 +140,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void getAddressSuccess() throws Exception{
+    void getAddressSuccess() throws Exception {
         Contact contact = contactRepository.findById("test").orElseThrow();
 
         Address address = new Address();
@@ -173,7 +174,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void deleteAddressNotFound() throws Exception{
+    void deleteAddressNotFound() throws Exception {
         mockMvc.perform(
                 delete("/api/contacts/test/addresses/test")
                         .accept(MediaType.APPLICATION_JSON)
@@ -189,7 +190,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void deleteAddressSuccess() throws Exception{
+    void deleteAddressSuccess() throws Exception {
         Contact contact = contactRepository.findById("test").orElseThrow();
 
         Address address = new Address();
@@ -220,7 +221,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void updateAddressBadRequest() throws Exception{
+    void updateAddressBadRequest() throws Exception {
         UpdateAddressRequest request = new UpdateAddressRequest();
         request.setCountry("");
 
@@ -240,7 +241,7 @@ class AddressControllerTest {
     }
 
     @Test
-    void updateAddressSuccess() throws Exception{
+    void updateAddressSuccess() throws Exception {
         Contact contact = contactRepository.findById("test").orElseThrow();
 
         Address address = new Address();
@@ -279,6 +280,53 @@ class AddressControllerTest {
             assertEquals(request.getPostalCode(), response.getData().getPostalCode());
 
             assertTrue(addressRepository.existsById(response.getData().getId()));
+        });
+    }
+
+    @Test
+    void listAddressNotFound() throws Exception {
+        mockMvc.perform(
+                get("/api/contacts/salah/addresses")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("X-API-TOKEN", "test")
+        ).andExpectAll(
+                status().isNotFound()
+        ).andDo(result -> {
+            WebResponse<String> response = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>() {
+            });
+            assertNotNull(response.getErrors());
+        });
+    }
+
+    @Test
+    void listAddressSuccess() throws Exception {
+        Contact contact = contactRepository.findById("test").orElseThrow();
+
+        for (int i = 0; i < 5; i++) {
+            Address address = new Address();
+            address.setId("test-" + i);
+            address.setContact(contact);
+            address.setStreet("Jalan");
+            address.setCity("Jakarta");
+            address.setProvince("DKI");
+            address.setCountry("Indonesia");
+            address.setPostalCode("123123");
+            addressRepository.save(address);
+        }
+
+        mockMvc.perform(
+                get("/api/contacts/test/addresses")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("X-API-TOKEN", "test")
+        ).andExpectAll(
+                status().isOk()
+        ).andDo(result -> {
+            WebResponse<List<AddressResponse>> response = objectMapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>() {
+            });
+            assertNull(response.getErrors());
+            assertEquals(5, response.getData().size());
         });
     }
 }

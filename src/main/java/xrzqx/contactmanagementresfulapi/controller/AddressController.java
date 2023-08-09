@@ -7,6 +7,8 @@ import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.*;
 import xrzqx.contactmanagementresfulapi.service.AddressService;
 
+import java.util.List;
+
 @RestController
 public class AddressController {
 
@@ -63,5 +65,16 @@ public class AddressController {
         request.setIdAddress(idAddress);
         AddressResponse addressResponse = addressService.update(user, request);
         return WebResponse.<AddressResponse>builder().data(addressResponse).build();
+    }
+
+    @GetMapping(
+            path = "/api/contacts/{idContact}/addresses",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<List<AddressResponse>> list(User user,
+                                                   @PathVariable("idContact") String idContact
+    ){
+        List<AddressResponse> addressResponse = addressService.list(user,idContact);
+        return WebResponse.<List<AddressResponse>>builder().data(addressResponse).build();
     }
 }
