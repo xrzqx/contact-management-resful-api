@@ -10,6 +10,7 @@ import xrzqx.contactmanagementresfulapi.entity.Contact;
 import xrzqx.contactmanagementresfulapi.entity.User;
 import xrzqx.contactmanagementresfulapi.model.AddressResponse;
 import xrzqx.contactmanagementresfulapi.model.CreateAddressRequest;
+import xrzqx.contactmanagementresfulapi.model.UpdateAddressRequest;
 import xrzqx.contactmanagementresfulapi.repository.AddressRepository;
 import xrzqx.contactmanagementresfulapi.repository.ContactRepository;
 
@@ -80,5 +81,25 @@ public class AddressService {
 
         addressRepository.delete(address);
 
+    }
+
+    @Transactional
+    public AddressResponse update(User user, UpdateAddressRequest request) {
+        validationService.validate(request);
+
+        Contact contact = contactRepository.findFirstByUserAndId(user, request.getIdContact())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact is Not Found"));
+
+        Address address = addressRepository.findFirstByContactAndId(contact, request.getIdAddress())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Address is Not Found"));
+
+        address.setStreet(request.getStreet());
+        address.setCity(request.getCity());
+        address.setProvince(request.getProvince());
+        address.setCountry(request.getCountry());
+        address.setPostalCode(request.getPostalCode());
+        addressRepository.save(address);
+
+        return toAddressResponse(address);
     }
 }

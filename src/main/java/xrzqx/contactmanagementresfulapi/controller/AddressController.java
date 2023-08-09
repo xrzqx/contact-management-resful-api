@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import xrzqx.contactmanagementresfulapi.entity.User;
-import xrzqx.contactmanagementresfulapi.model.AddressResponse;
-import xrzqx.contactmanagementresfulapi.model.CreateAddressRequest;
-import xrzqx.contactmanagementresfulapi.model.WebResponse;
+import xrzqx.contactmanagementresfulapi.model.*;
 import xrzqx.contactmanagementresfulapi.service.AddressService;
 
 @RestController
@@ -50,5 +48,20 @@ public class AddressController {
     ){
         addressService.delete(user,idContact,idAddress);
         return WebResponse.<String>builder().data("OK").build();
+    }
+
+    @PutMapping(
+            path = "/api/contacts/{idContact}/addresses/{idAddress}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<AddressResponse> update(User user,
+                                               @RequestBody UpdateAddressRequest request,
+                                               @PathVariable("idContact") String idContact,
+                                               @PathVariable("idAddress") String idAddress){
+        request.setIdContact(idContact);
+        request.setIdAddress(idAddress);
+        AddressResponse addressResponse = addressService.update(user, request);
+        return WebResponse.<AddressResponse>builder().data(addressResponse).build();
     }
 }
