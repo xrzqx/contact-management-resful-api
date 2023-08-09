@@ -1,0 +1,359 @@
+GET http://localhost:8080/api/users/current
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T044546.401.json
+
+###
+
+DELETE http://localhost:8080/api/auth/logout
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T044536.200.json
+
+###
+
+GET http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T044035.200.json
+
+###
+
+DELETE http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses/ad00b995-9d15-45aa-88c2-77093e5c8921
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T044016.404.json
+
+###
+
+DELETE http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses/ad00b995-9d15-45aa-88c2-77093e5c8921
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T044011.200.json
+
+###
+
+GET http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T043926.200.json
+
+###
+
+PUT http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses/ad00b995-9d15-45aa-88c2-77093e5c8921
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 123
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "street": "Jalan Baru",
+  "city": "Surabaya",
+  "province": "JATIM",
+  "country": "Indonesia",
+  "postalCode": "4123"
+}
+
+<> 2023-08-10T043911.200.json
+
+###
+
+GET http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T043750.200.json
+
+###
+
+POST http://localhost:8080/api/contacts/60716d75-db9e-48c7-abbb-40a2b208b43f/addresses
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 118
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "street": "Jalan",
+  "city": "Surabaya",
+  "province": "JATIM",
+  "country": "Indonesia",
+  "postalCode": "4123"
+}
+
+<> 2023-08-10T043655.200.json
+
+###
+
+DELETE http://localhost:8080/api/contacts/03098351-75e4-4805-ab8e-1e792ee87e01
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T043307.404.json
+
+###
+
+DELETE http://localhost:8080/api/contacts/03098351-75e4-4805-ab8e-1e792ee87e01
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T043303.200.json
+
+###
+
+PATCH http://localhost:8080/api/contacts/03098351-75e4-4805-ab8e-1e792ee87e01
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstName": "Budi",
+  "phone": "542312342"
+}
+
+<> 2023-08-10T043110.200.json
+
+###
+
+GET http://localhost:8080/api/contacts/03098351-75e4-4805-ab8e-1e792ee87e01
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042830.200.json
+
+###
+
+GET http://localhost:8080/api/contacts?phone=123
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042721.200.json
+
+###
+
+GET http://localhost:8080/api/contacts?email=dito
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042614.200.json
+
+###
+
+GET http://localhost:8080/api/contacts?name=dito
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042546.200.json
+
+###
+
+GET http://localhost:8080/api/contacts?name=joko
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042533.200.json
+
+###
+
+GET http://localhost:8080/api/contacts
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T042411.200.json
+
+###
+
+POST http://localhost:8080/api/contacts
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 106
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstName": "Joko",
+  "lastName": "Samudro",
+  "email": "joko@example.com",
+  "phone": "1412323123"
+}
+
+<> 2023-08-10T042252.200.json
+
+###
+
+POST http://localhost:8080/api/contacts
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstName": "",
+  "lastName": "Dito",
+  "email": "dito@example.com",
+  "phone": "123123123"
+}
+
+<> 2023-08-10T042137.400.json
+
+###
+
+POST http://localhost:8080/api/contacts
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 106
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstName": "Alfareza",
+  "lastName": "Dito",
+  "email": "dito@example.com",
+  "phone": "123123123"
+}
+
+<> 2023-08-10T042105.200.json
+
+###
+
+GET http://localhost:8080/api/users/current
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T041724.200.json
+
+###
+
+PATCH http://localhost:8080/api/users/current
+Accept: application/json
+Content-Type: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Content-Length: 33
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Abdul Razzaq Baru"
+}
+
+<> 2023-08-10T041703.200.json
+
+###
+
+GET http://localhost:8080/api/users/current
+Accept: application/json
+X-API-TOKEN: f5313053-53ef-4899-8f54-a16b9ae2de6d
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-10T040917.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Accept: application/json
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "razzaq",
+  "password": "rahasia"
+}
+
+<> 2023-08-10T040709.200.json
+
+###
+
+POST http://localhost:8080/api/users
+Accept: application/json
+Content-Type: application/json
+Content-Length: 77
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "razzaq",
+  "password": "rahasia",
+  "name": "Abdul Razzaq"
+}
+
+<> 2023-08-10T040531.200.json
+
+###
+

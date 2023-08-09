@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": "ad00b995-9d15-45aa-88c2-77093e5c8921",
+      "street": "Jalan",
+      "city": "Surabaya",
+      "province": "JATIM",
+      "country": "Indonesia",
+      "postalCode": "4123"
+    }
+  ],
+  "errors": null,
+  "paging": null
+}

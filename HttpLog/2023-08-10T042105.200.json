@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "60716d75-db9e-48c7-abbb-40a2b208b43f",
+    "firstName": "Alfareza",
+    "lastName": "Dito",
+    "email": "dito@example.com",
+    "phone": "123123123"
+  },
+  "errors": null,
+  "paging": null
+}

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "03098351-75e4-4805-ab8e-1e792ee87e01",
+    "firstName": "Budi",
+    "lastName": "Samudro",
+    "email": "joko@example.com",
+    "phone": "542312342"
+  },
+  "errors": null,
+  "paging": null
+}

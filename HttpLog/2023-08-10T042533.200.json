@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "03098351-75e4-4805-ab8e-1e792ee87e01",
+      "firstName": "Joko",
+      "lastName": "Samudro",
+      "email": "joko@example.com",
+      "phone": "1412323123"
+    }
+  ],
+  "errors": null,
+  "paging": {
+    "currentPage": 0,
+    "totalPage": 1,
+    "size": 10
+  }
+}
