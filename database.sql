@@ -40,7 +40,7 @@ CREATE TABLE addresses
     contact_id   VARCHAR(100) NOT NULL,
     street      VARCHAR(100),
     city      VARCHAR(100),
-    provice      VARCHAR(100),
+    province      VARCHAR(100),
     country      VARCHAR(100) NOT NULL,
     postalcode      VARCHAR(10),
     PRIMARY KEY (id),

@@ -28,7 +28,7 @@ public class AddressService {
     private ValidationService validationService;
 
     @Transactional
-    public AddressResponse create(User user, CreateAddressRequest request){
+    public AddressResponse create(User user, CreateAddressRequest request) {
         validationService.validate(request);
 
         Contact contact = contactRepository.findFirstByUserAndId(user, request.getIdContact())
@@ -39,7 +39,7 @@ public class AddressService {
         address.setContact(contact);
         address.setStreet(request.getStreet());
         address.setCity(request.getCity());
-        address.setProvice(request.getProvince());
+        address.setProvince(request.getProvince());
         address.setCountry(request.getCountry());
         address.setPostalCode(request.getPostalCode());
 
@@ -53,9 +53,20 @@ public class AddressService {
                 .id(address.getId())
                 .street(address.getStreet())
                 .city(address.getCity())
-                .province(address.getProvice())
+                .province(address.getProvince())
                 .country(address.getCountry())
                 .postalCode(address.getPostalCode())
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    public AddressResponse get(User user, String idContact, String idAddress) {
+        Contact contact = contactRepository.findFirstByUserAndId(user, idContact)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact is Not Found"));
+
+        Address address = addressRepository.findFirstByContactAndId(contact, idAddress)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Address is Not Found"));
+
+        return toAddressResponse(address);
     }
 }

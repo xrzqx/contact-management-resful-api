@@ -19,7 +19,7 @@ public class Address {
 
     private String street;
     private String city;
-    private String provice;
+    private String province;
     private String country;
 
     @Column(name = "postalcode")
